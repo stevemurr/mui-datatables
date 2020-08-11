@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MuiPopover from '@material-ui/core/Popover';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import Grow from '@material-ui/icons/Grow';
+import Grow from '@material-ui/core/Grow';
 import Draggable from 'react-draggable'
 
 const DraggableWrapper = ({ children, ...other }) => {
