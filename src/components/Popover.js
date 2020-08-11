@@ -3,6 +3,24 @@ import PropTypes from 'prop-types';
 import MuiPopover from '@material-ui/core/Popover';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import Grow from '@material-ui/icons/Grow';
+import Draggable from 'react-draggable'
+
+const DraggableWrapper = ({ children, ...other }) => {
+  return (
+    <Draggable handle=".handle">
+      {React.cloneElement(children, { ...other })}
+    </Draggable>
+  );
+};
+
+const DraggableGrow = ({ children, ...other }) => {
+  return (
+    <Grow {...other} timeout={0}>
+      <DraggableWrapper>{children}</DraggableWrapper>
+    </Grow>
+  );
+};
 
 const Popover = ({ className, trigger, refExit, hide, content, ...providedProps }) => {
   const [isOpen, open] = useState(false);
@@ -64,6 +82,7 @@ const Popover = ({ className, trigger, refExit, hide, content, ...providedProps 
         anchorEl={anchorEl.current}
         anchorOrigin={anchorOriginSpecs}
         transformOrigin={transformOriginSpecs}
+        TransitionComponent={DraggableGrow}
         {...providedProps}>
         <IconButton
           aria-label="Close"
